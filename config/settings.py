@@ -144,6 +144,7 @@ STATICFILES_DIRS = [
 
 
 # Configurações de Mídia (Fotos que os usuários enviam)
+# Configurações de Mídia (Fotos que os usuários enviam)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
@@ -154,16 +155,17 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# 🔥 ALTERE ESTAS LINHAS ABAIXO PARA USAR O RESTRICIONAMENTO SEGURO DO WHITENOISE 🔥
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# 🔥 ALTERAÇÃO TOTAL PARA COMPATIBILIDADE COM PYTHON 3.14 🔥
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
