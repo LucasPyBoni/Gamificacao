@@ -65,7 +65,7 @@ def cadastro(request):
       department=None
     )
 
-    messages.success(request, 'sua conta foi criada com sucesso! Faça o login para acessar')
+    messages.success(request, 'sua conta foi criada com sucesso!')
     return redirect ("login")
 
   return render(request, "accounts/cadastro.html")
