@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Configurar ambiente de desenvolvimento de novos devs",
+    "description": "Ajudar o novo integrante da equipe a rodar o projeto localmente sem erros.",
+    "difficulty": "easy",
+    "coin_reward": 15
+  },
+  {
+    "title": "Revisar um Pull Request complexo",
+    "description": "Analisar detalhadamente o código de um colega buscando boas práticas e segurança.",
+    "difficulty": "medium",
+    "coin_reward": 30
+  },
+  {
+    "title": "Otimizar query lenta no banco de dados",
+    "description": "Identificar gargalos de performance e aplicar índices ou refatorar a consulta.",
+    "difficulty": "hard",
+    "coin_reward": 80
+  },
+  {
+    "title": "Sugerir melhoria de UX aprovada pelo time",
+    "description": "Apresentar uma proposta visual ou de fluxo que melhore a experiência do usuário.",
+    "difficulty": "easy",
+    "coin_reward": 10
+  },
+  {
+    "title": "Refatorar componente legado do front-end",
+    "description": "Atualizar um código antigo para os padrões modernos do projeto atual.",
+    "difficulty": "medium",
+    "coin_reward": 45
+  },
+  {
+    "title": "Implementar testes unitários para rota crítica",
+    "description": "Garantir cobertura de testes acima de 85% em uma funcionalidade principal.",
+    "difficulty": "medium",
+    "coin_reward": 50
+  },
+  {
+    "title": "Corrigir falha de segurança apontada no report",
+    "description": "Tratar vulnerabilidade crítica ou brecha de exposição de dados no sistema.",
+    "difficulty": "hard",
+    "coin_reward": 100
+  },
+  {
+    "title": "Participar ativamente da reunião de retrospectiva",
+    "description": "Trazer pontos acionáveis de melhoria para o processo da equipe.",
+    "difficulty": "easy",
+    "coin_reward": 5
+  },
+  {
+    "title": "Criar template reutilizável para o projeto",
+    "description": "Desenvolver um modelo de código ou padrão que economize tempo dos outros devs.",
+    "difficulty": "medium",
+    "coin_reward": 35
+  },
+  {
+    "title": "Liderar a migração de uma biblioteca core",
+    "description": "Atualizar uma dependência principal do projeto garantindo retrocompatibilidade.",
+    "difficulty": "hard",
+    "coin_reward": 90
+  },
+  {
+    "title": "Atualizar o README do repositório principal",
+    "description": "Deixar as instruções de setup, arquitetura e comandos 100% claras e atuais.",
+    "difficulty": "easy",
+    "coin_reward": 15
+  },
+  {
+    "title": "Apoiar colega travado em um bloqueio técnico",
+    "description": "Fazer uma sessão de pair programming para resolver um problema que estava gerando atraso.",
+    "difficulty": "medium",
+    "coin_reward": 25
+  },
+  {
+    "title": "Desenhar arquitetura de uma nova feature",
+    "description": "Criar o diagrama de blocos, fluxo de dados e documentação técnica antes do código.",
+    "difficulty": "hard",
+    "coin_reward": 75
+  },
+  {
+    "title": "Reportar bug detalhado com passos de reprodução",
+    "description": "Encontrar uma falha no sistema e abrir um card explicando exatamente como simular.",
+    "difficulty": "easy",
+    "coin_reward": 10
+  },
+  {
+    "title": "Criar automação de tarefa repetitiva (script/CI)",
+    "description": "Desenvolver um script utilitário para automatizar rotinas manuais do time.",
+    "difficulty": "medium",
+    "coin_reward": 40
+  },
+  {
+    "title": "Escrever artigo técnico para o blog/wiki interna",
+    "description": "Compartilhar aprendizado de um problema complexo que você resolveu recentemente.",
+    "difficulty": "medium",
+    "coin_reward": 30
+  },
+  {
+    "title": "Dar feedback construtivo na avaliação 360",
+    "description": "Preencher detalhadamente os pontos fortes e de melhoria dos seus pares.",
+    "difficulty": "easy",
+    "coin_reward": 10
+  },
+  {
+    "title": "Realizar homologação final de entrega com cliente/PO",
+    "description": "Acompanhar a validação das entregas garantindo que tudo atende aos critérios de aceite.",
+    "difficulty": "easy",
+    "coin_reward": 15
+  },
+  {
+    "title": "Resolver débito técnico acumulado",
+    "description": "Eliminar avisos de linter, logs desnecessários ou código morto espalhado no projeto.",
+    "difficulty": "medium",
+    "coin_reward": 35
+  },
+  {
+    "title": "Subir versão estável em produção sem downtime",
+    "description": "Gerenciar o deploy com sucesso em horários de pico sem impactar nenhum usuário.",
+    "difficulty": "hard",
+    "coin_reward": 85
+  }
+]

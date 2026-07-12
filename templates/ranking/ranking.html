@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Ranking Geral em breve</h1>
+</div>
+
+<section class="ranking-teaser">
+  <!-- ======================================
+       BLOCO 1: IDENTIDADE / TEASER ANIMADO
+  ======================================= -->
+  <div class="teaser-hero">
+    <div class="badge-animated">
+      <i data-lucide="sparkles" class="pulse-icon"></i>
+      <span>Nova Funcionalidade</span>
+    </div>
+    <h2 class="teaser-title">A Competição está chegando!</h2>
+    <p class="teaser-subtitle">
+      Mostre quem domina o WorkPaid. Acumule moedas, conclua tarefas e garanta o
+      seu lugar no topo do pódio para ganhar prêmios exclusivos da empresa.
+    </p>
+  </div>
+
+  <!-- ======================================
+       BLOCO 2: PÓDIO PREVISUALIZAÇÃO (ILUSTRAÇÃO CSS)
+  ======================================= -->
+  <div class="podium-preview">
+    <!-- 2º Lugar -->
+    <div class="podium-step step-2">
+      <div class="avatar-skeleton"></div>
+      <div class="podium-block">2</div>
+    </div>
+    <!-- 1º Lugar (Mais alto e animado) -->
+    <div class="podium-step step-1">
+      <i data-lucide="crown" class="crown-icon"></i>
+      <div class="avatar-skeleton glow"></div>
+      <div class="podium-block">1</div>
+    </div>
+    <!-- 3º Lugar -->
+    <div class="podium-step step-3">
+      <div class="avatar-skeleton"></div>
+      <div class="podium-block">3</div>
+    </div>
+  </div>
+
+  <!-- ======================================
+       BLOCO 3: CONTADOR REGRESSIVO
+  ======================================= -->
+  <div class="countdown-container">
+    <span class="countdown-label">Lançamento em:</span>
+    <div class="countdown-timer">
+      <div class="timer-segment">
+        <span class="timer-number" id="days">Só</span>
+        <span class="timer-label">Dias</span>
+      </div>
+      <div class="timer-divider">:</div>
+      <div class="timer-segment">
+        <span class="timer-number" id="hours">Deus</span>
+        <span class="timer-label">Horas</span>
+      </div>
+      <div class="timer-divider">:</div>
+      <div class="timer-segment">
+        <span class="timer-number" id="minutes">Sabe</span>
+        <span class="timer-label">Min.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================
+       BLOCO 4: ENGAJAMENTO (CTA)
+  ======================================= -->
+  <div class="teaser-cta">
+    <p>Mas enquanto o ranking não começa, que tal acumular mais moedas?</p>
+    <a href="/tasks/" class="btn-teaser-action">
+      <i data-lucide="shield-check"></i>
+      <span>Ir para a Tarefas</span>
+    </a>
+  </div>
+</section>
+
+<!-- Script simples para simular o contador girando (Animação) -->
+<script>
+  function updateCountdown() {
+    const minsElement = document.getElementById("minutes");
+    if (minsElement) {
+      let currentMins = parseInt(minsElement.innerText);
+      if (currentMins > 0) {
+        minsElement.innerText = String(currentMins - 1).padStart(2, "0");
+      } else {
+        minsElement.innerText = "59";
+      }
+    }
+  }
+  setInterval(updateCountdown, 60000);
+</script>
+{% endblock %}

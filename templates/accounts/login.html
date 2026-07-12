@@ -1,0 +1,215 @@
+{% load static %}
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Bem-vindo de volta</h2>
+      <p>Insira suas credenciais para acessar o painel</p>
+    </div>
+
+    <form method="POST" action="">
+      {% csrf_token %}
+
+      <div class="input-group">
+        <label for="username">Usuário</label>
+        <div class="input-field">
+          <span class="icon">👤</span>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Seu nome de usuário"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <div class="input-field">
+          <span class="icon">🔒</span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Sua senha secreta"
+            required
+          />
+        </div>
+        <div class="forgot-password">
+          <a href="{% url 'reset_password' %}" class="forgot-password-link"
+            >Esqueceu a senha?</a
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login">Entrar na Conta</button>
+    </form>
+
+    <div class="login-footer">
+      <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Reset & Variáveis de Cores Alteradas para Azul Marinho */
+  :root {
+    --primary-color: #0f172a; /* Azul marinho escuro principal */
+    --primary-hover: #1e293b; /* Tom de azul marinho mais claro para o hover */
+    --bg-gradient: linear-gradient(
+      135deg,
+      #020617 0%,
+      #0f172a 100%
+    ); /* Gradiente marinho profundo */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-main: #0f172a; /* Texto alinhado com o azul marinho */
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+  }
+
+  /* Container Principal (Ocupa a tela toda) */
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Card de Login */
+  .login-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 420px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Cabeçalho */
+  .login-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .login-header h2 {
+    color: var(--text-main);
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+  }
+
+  .login-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Grupos de Input */
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .input-group label {
+    display: block;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-field .icon {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-main);
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .input-field input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.15); /* Sombra de foco ajustada para azul */
+  }
+
+  /* Links secundários */
+  .forgot-password {
+    text-align: right;
+    margin-top: 6px;
+  }
+
+  .forgot-password a,
+  .login-footer a {
+    color: var(--primary-color);
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600; /* Negrito leve para destacar no fundo claro */
+  }
+
+  .forgot-password a:hover,
+  .login-footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Botão de Entrar */
+  .btn-login {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      transform 0.1s ease;
+    margin-top: 10px;
+  }
+
+  .btn-login:hover {
+    background: var(--primary-hover);
+  }
+
+  .btn-login:active {
+    transform: scale(0.98);
+  }
+
+  /* Rodapé do Card */
+  .login-footer {
+    text-align: center;
+    margin-top: 28px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+  }
+
+  .login-footer p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0;
+  }
+</style>

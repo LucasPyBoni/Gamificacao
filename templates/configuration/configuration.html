@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Configurações da Conta</h1>
+</div>
+
+<section class="dashboard-layout">
+  <div class="dashboard-content-split">
+    <!-- Painel de Segurança (Troca de senha) -->
+    <div class="dashboard-section-card main-card">
+      <div class="section-card-header">
+        <h2>Segurança e Acesso</h2>
+        <i data-lucide="lock" class="section-icon"></i>
+      </div>
+      <p class="section-desc">
+        Deseja atualizar suas credenciais? Preencha os campos abaixo para mudar
+        sua senha de acesso.
+      </p>
+
+      <form
+        action="{% url 'configuration' %}"
+        method="POST"
+        class="config-form"
+      >
+        {% csrf_token %}
+        <div class="info-field">
+          <label for="current_password">Senha Atual</label>
+          <input
+            type="password"
+            name="senha_atual"
+            required
+            id="current_password"
+          />
+        </div>
+        <div class="info-field">
+          <label for="new_password">Nova Senha</label>
+          <input type="password" name="nova_senha" required id="new_password" />
+        </div>
+        <button type="submit" name="btn_senha" class="btn-teaser-action">
+          Salvar Nova Senha
+        </button>
+      </form>
+    </div>
+
+    <!-- Painel de Preferências (Notificações) -->
+    <div class="dashboard-section-card side-card">
+      <div class="section-card-header">
+        <h2>Preferências</h2>
+        <i data-lucide="sliders" class="section-icon"></i>
+      </div>
+      <div class="config-toggle-group">
+        <label class="toggle-control">
+          <input type="checkbox" checked /> Notificações por e-mail
+        </label>
+        <label class="toggle-control">
+          <input type="checkbox" checked /> Alertar sobre novas tarefas
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

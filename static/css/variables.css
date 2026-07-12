@@ -1,0 +1,26 @@
+@import "variables.css";
+
+/* Reset Global da sua aplicação */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--white-soft);
+  color: var(--text-main);
+}
+
+select {
+  border-radius: 0.6rem;
+  border-color: #e2e8f0;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--text-main);
+}
+
+select:hover {
+  background: var(--white-soft);
+}

@@ -1,0 +1,190 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Relatórios e Análises</h1>
+</div>
+
+<section class="dashboard-layout">
+  <!-- Filtros Superiores (Onde as APIs vão ler as datas) -->
+  <div class="report-filters">
+    <div class="filter-group">
+      <label class="filter-label">Filtro:</label>
+      <select id="filtro-usuario" class="report-select">
+        <option value="geral">Geral (todos)</option>
+        <option value="usuario">{{ request.user.username }}</option>
+      </select>
+    </div>
+    <a
+      id="btn-exportar"
+      href="{% url 'exportar_csv' %}?tipo=geral"
+      class="btn-export-csv"
+      style="
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      "
+    >
+      <i data-lucide="download"></i> Exportar CSV
+    </a>
+  </div>
+  <!-- Script para atualizar o link do CSV ao mudar o filtro -->
+  <script>
+    const selectUsuario = document.getElementById("filtro-usuario");
+    const btnExportar = document.getElementById("btn-exportar");
+    const baseUrlCsv = "{% url 'exportar_csv' %}";
+
+    selectUsuario.addEventListener("change", function () {
+      window.location.href = "{% url 'reports' %}?tipo=" + this.value;
+    });
+
+    // Garante que o botão de CSV sempre use o filtro correto da URL atual
+    const urlParams = new URLSearchParams(window.location.search);
+    const tipoAtual = urlParams.get("tipo") || "geral";
+
+    // Define o valor do select de acordo com o que veio do Django
+    selectUsuario.value = tipoAtual;
+
+    // Atualiza o link do CSV para acompanhar o filtro da tela
+    btnExportar.href = `${baseUrlCsv}?tipo=${tipoAtual}`;
+  </script>
+
+  <!-- Cards de Dados Consolidados -->
+  <div class="metrics-grid">
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">Total de Moedas Emitidas</span>
+        <i data-lucide="plus-circle" class="metric-icon icon-task"></i>
+      </div>
+      <h2 class="metric-value">
+        {{ total_moedas_emitidas|default:0 }} <small>moedas</small>
+      </h2>
+    </article>
+
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">Recompensas Resgatadas</span>
+        <i data-lucide="shopping-bag" class="metric-icon icon-award"></i>
+      </div>
+      <h2 class="metric-value">
+        {{ total_recompensas|default:0 }}
+        <small>itens</small>
+      </h2>
+    </article>
+
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">Taxa de Engajamento</span>
+        <i data-lucide="trending-up" class="metric-icon icon-coins"></i>
+      </div>
+      <h2 class="metric-value">{{ taxa_engajamento }}%</h2>
+    </article>
+  </div>
+
+  <!-- Espaço para os Gráficos de API -->
+  <div class="dashboard-content-split">
+    <div class="dashboard-section-card main-card">
+      <div class="section-card-header">
+        <h2>Distribuição de Moedas por Departamento</h2>
+        <i data-lucide="bar-chart-3" class="section-icon"></i>
+      </div>
+      <!-- Placeholder de Gráfico limpo e ajustado para CSS -->
+      <!-- Dentro do card de Distribuição de Moedas por Departamento -->
+      <div
+        class="card-body"
+        style="position: relative; width: 100%; height: 300px"
+      >
+        <!-- O Chart.js precisa dessa tag canvas com um ID único -->
+        <canvas id="graficoMoedas"></canvas>
+      </div>
+    </div>
+
+    <!-- Removido estilos em var(--color-*) que quebravam o layout -->
+    <!-- <div class="dashboard-section-card side-card">
+      <div class="section-card-header">
+        <h2>Logs do Sistema</h2>
+        <i data-lucide="terminal" class="section-icon"></i>
+      </div>
+      <div class="log-list">
+        <div class="log-item">
+          <span>API Pagamentos:</span> <strong>OK (200)</strong>
+        </div>
+        <div class="log-item">
+          <span>Sincronização:</span> <strong>Há 5min</strong>
+        </div>
+        <div class="log-item">
+          <span>Banco de Dados:</span> <strong>Estável</strong>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</section>
+<!-- Importa a biblioteca de gráficos via CDN -->
+<!-- 1. PRIMEIRO: Importamos a biblioteca (Garante que o 'Chart' vai existir na memória) -->
+<!-- <script src="https://jsdelivr.net"></script> -->
+
+<!-- 2. SEGUNDO: Rodamos o nosso script que usa o Chart -->
+<script>
+  // O DOMContentLoaded garante que o HTML do canvas já exista na tela antes de desenhar
+  document.addEventListener("DOMContentLoaded", function () {
+    // Verifica se a biblioteca Chart realmente foi carregada com sucesso
+    if (typeof Chart === "undefined") {
+      console.error("A biblioteca Chart.js não pôde ser carregada da CDN.");
+      return;
+    }
+
+    fetch("{% url 'api_moedas_departamento' %}")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro na resposta da rede ao buscar a API");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const departamentos = Object.keys(data);
+        const totalMoedas = Object.values(data);
+
+        // Se o banco estiver totalmente vazio, exibe um aviso amigável no console
+        if (departamentos.length === 0) {
+          console.log("Nenhum dado encontrado para gerar o gráfico.");
+          return;
+        }
+
+        const ctx = document.getElementById("graficoMoedas").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: departamentos,
+            datasets: [
+              {
+                label: "Moedas Distribuídas",
+                data: totalMoedas,
+                backgroundColor: "#1a73e8", // Cor das barras
+                borderColor: "#1557b0",
+                borderWidth: 1,
+                borderRadius: 6,
+                borderSkipped: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { color: "rgba(0, 0, 0, 0.05)" },
+              },
+              x: {
+                grid: { display: false },
+              },
+            },
+          },
+        });
+      })
+      .catch((error) => console.error("Erro ao alimentar o gráfico:", error));
+  });
+</script>
+{% endblock %}

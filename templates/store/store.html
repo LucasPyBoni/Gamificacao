@@ -1,0 +1,112 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Loja de Recompensas</h1>
+
+  <!-- Removido o style inline e mantido o padrão visual -->
+  <div class="store-balance">
+    <i data-lucide="coins" class="store-balance__icon"></i>
+    <div class="store-balance__content">
+      <span class="store-balance__label">Seu Saldo</span>
+      <span class="store-balance__value">
+        {{ request.user.employee.coins }} <small>moedas</small>
+      </span>
+    </div>
+  </div>
+</div>
+
+<section class="dashboard-layout">
+  <!--  -->
+  <div class="mb-4 d-flex justify-content-start">
+    <form method="GET" action="" class="d-flex gap-2 align-items-center">
+      {% if request.GET.categoria %}
+      <input
+        type="hidden"
+        name="categoria"
+        value="{{ request.GET.categoria }}"
+      />
+      {% endif %}
+      <label for="categoria" class="fw-bold text-secondary text-nowrap m-0"
+        >Filtrar por:</label
+      >
+
+      <!-- JavaScript limpa a URL se escolher vazio, senão submete o form -->
+      <select
+        name="categoria"
+        id="categoria"
+        class="form-select form-select-sm border-secondary-subtle"
+        onchange="
+          this.value === ''
+            ? (window.location.href =
+                window.location.pathname +
+                (this.form.categoria
+                  ? '?categoria=' + this.form.categoria.value
+                  : ''))
+            : this.form.submit()
+        "
+        style="max-width: 200px"
+      >
+        <!-- CORREÇÃO 1: Nome alterado para categoria_filtrada -->
+        <option value="">Todas as Categorias</option>
+        {% for valor, nome in categories %}
+        <!-- CORREÇÃO 2: Nome alterado para categoria_filtrada aqui também -->
+        <option value="{{ valor }}" {% if categoria_filtrada|stringformat:"s" == valor|stringformat:"s" %}selected{% endif %}>
+        <!--  -->
+          {{ nome }}
+        </option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+
+  <!-- Grid de Produtos -->
+  <div class="metrics-grid">
+    <!-- Card de Produto 3 -->
+    {% for reward in rewards %}
+    <article class="product-card">
+      <!-- Estilos inline de cores limpos e movidos para classes CSS específicas -->
+
+      <div class="product-image-placeholder img-info">
+        {% if reward.category == 'food' %}
+        <i data-lucide="utensils" class="product-img-icon icon-info"></i>
+        {% elif reward.category == 'eletronics' %}
+        <i data-lucide="smartphone" class="product-img-icon icon-info"></i>
+        {% elif reward.category == 'clothing' %}
+        <i data-lucide="shirt" class="product-img-icon icon-info"></i>
+        {% else %}
+        <i data-lucide="gift" class="product-img-icon icon-info"></i>
+        {% endif %}
+      </div>
+
+      <div class="product-info">
+        <!--  -->
+        <h3>{{ reward.name }}</h3>
+        <!--  -->
+        <p>{{ reward.description }}</p>
+
+        <div class="product-footer">
+          <div class="product-price">
+            <i data-lucide="coins"></i>
+            <span>{{ reward.coin_cost }}<small>moedas</small></span>
+          </div>
+          {% if reward.stock == 0 %}
+          <button class="btn-shop-action-esgot" type="button" disabled>
+            Esgotado
+          </button>
+          {% elif request.user.employee.coins < reward.coin_cost %}
+          <button class="btn-shop-action-desabilit" type="button" disabled>
+            Moedas insuficientes
+          </button>
+          {% else %}
+          <form action="{% url 'redeem_reward'  reward.id %}" method="POST">
+            {% csrf_token %}
+            <button class="btn-shop-action" type="submit">Resgatar</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+<!--  -->

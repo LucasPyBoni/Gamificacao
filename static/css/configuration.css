@@ -1,0 +1,253 @@
+/* Margem auxiliar para separar os blocos */
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+/* Ações Rápidas do Administrador */
+.admin-quick-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white-pure);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-btn.active {
+  background-color: #e0f2fe;
+  border-color: #0284c7;
+  color: #0369a1;
+}
+
+.admin-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+.admin-btn:hover {
+  background-color: var(--white-soft);
+  border-color: var(--navy-light);
+}
+
+/* Botão Destrutivo (Resetar Trimestre) */
+.admin-btn.btn-danger-action {
+  background-color: var(--white-pure);
+  border-color: rgba(220, 38, 38, 0.4);
+  color: var(--danger);
+}
+
+.admin-btn.btn-danger-action:hover {
+  background-color: var(--danger-light);
+  border-color: var(--danger);
+}
+
+/* Caixa de Busca */
+.admin-search-box input {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  color: var(--text-main);
+  background-color: var(--white-soft);
+  transition: all 0.2s ease;
+  width: 220px;
+}
+
+.admin-search-box input:focus {
+  border-color: var(--navy-dark);
+  background-color: var(--white-pure);
+}
+
+/* Tabela Administrativa */
+.admin-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.admin-table tbody tr:hover {
+  background-color: var(--white-soft);
+}
+
+/* Célula do Usuário com Avatar */
+.admin-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-user-cell .avatar {
+  width: 32px;
+  height: 32px;
+  background-color: var(--navy-dark);
+  color: var(--white-pure);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Ações das Linhas (Botões de Editar/Deletar) */
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.table-actions button i {
+  width: 18px;
+  height: 18px;
+}
+
+.action-edit {
+  color: var(--success);
+}
+.action-edit:hover {
+  background-color: var(--success-light);
+}
+
+.action-delete {
+  color: var(--danger);
+}
+.action-delete:hover {
+  background-color: var(--danger-light);
+}
+
+/* Form de Alteração de Senha */
+.section-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.info-field input {
+  background-color: var(--white-soft);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+  color: var(--text-main);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.info-field input:focus {
+  border-color: var(--navy-dark);
+  background-color: var(--white-pure);
+}
+
+/* Botão de Salvar Senha */
+.btn-teaser-action {
+  margin-top: 8px;
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: var(--navy-dark);
+  color: var(--white-pure);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-teaser-action:hover {
+  background-color: var(--navy-medium);
+}
+
+/* Painel de Preferências (Toggles) */
+.config-toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-main);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.toggle-control input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(
+    --navy-dark
+  ); /* Deixa a caixa de marcação em azul marinho */
+}

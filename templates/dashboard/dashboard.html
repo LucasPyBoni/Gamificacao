@@ -1,0 +1,125 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Header com título alinhado à esquerda seguindo o padrão da sua loja -->
+<div class="store-header">
+  <h1 class="page-title">Dashboard</h1>
+</div>
+
+<section class="dashboard-layout">
+  <!-- ======================================
+       BLOCO 1: METRICS GRID (Os 4 Cards Principais)
+  ======================================= -->
+  <div class="metrics-grid">
+    <!-- Card 1: Saldo de Moedas -->
+    <article class="metric-card card-primary">
+      <div class="metric-header">
+        <span class="metric-title">Seu Saldo</span>
+        <i data-lucide="coins" class="metric-icon icon-coins"></i>
+      </div>
+      <h2 class="metric-value-money">{{ coins }} <small>moedas</small></h2>
+    </article>
+
+    <!-- Card 4: Tarefas Concluídas -->
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">Tarefas Concluídas</span>
+        <i data-lucide="check-circle" class="metric-icon icon-task"></i>
+      </div>
+      <h2 class="metric-value">
+        {{ total_tafs_concluidas|default:"0" }} <small>feitas</small>
+      </h2>
+    </article>
+
+    <!-- Card 3: Sequência / Dias Seguidos -->
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title"
+          ><abbr
+            title="Dias seguidos completando tarefas"
+            style="text-decoration: none"
+            >Dias Seguidos</abbr
+          ></span
+        >
+        <i data-lucide="flame" class="metric-icon icon-flame"></i>
+      </div>
+      <h2 class="metric-value">
+        {{ sequencia|default:"0" }} <small>dias</small>
+      </h2>
+    </article>
+
+    <!-- Card 2: Nível -->
+    <article class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">Nível Atual</span>
+        <i data-lucide="award" class="metric-icon icon-award"></i>
+      </div>
+      <h2 class="metric-value">{{ nivel|default:"Em breve" }}</h2>
+    </article>
+  </div>
+
+  <!-- ======================================
+       BLOCO 2: CONTEÚDO DIVIDIDO (Histórico vs Loja Rápida)
+  ======================================= -->
+  <div class="dashboard-content-split">
+    <!-- Lado Esquerdo: Últimas Movimentações -->
+    <div class="dashboard-section-card main-card">
+      <div class="section-card-header">
+        <h2>Últimas Movimentações</h2>
+        <i data-lucide="history" class="section-icon"></i>
+      </div>
+
+      <div class="history-list">
+        {% for transaction in transactions %}
+        <div class="history-item">
+          <div class="history-item-info">
+            <!-- Ícone dinâmico baseado no tipo de transação -->
+            {% if transaction.transaction_type == "credit" %}
+            <i data-lucide="arrow-down-left" class="tx-icon tx-credit"></i>
+            {% else %}
+            <i data-lucide="arrow-up-right" class="tx-icon tx-debit"></i>
+            {% endif %}
+            <span class="tx-reason">{{ transaction.reason }}</span>
+          </div>
+          <strong
+            class="tx-amount {% if transaction.transaction_type == 'credit' %}text-success{% else %}text-danger{% endif %}"
+          >
+            {% if transaction.transaction_type == "credit" %}
+            <!--  -->
+            +{{transaction.amount }}
+            <!--  -->
+            {% else %}
+            <!--  -->
+            -{{ transaction.amount }}
+            <!--  -->
+            {% endif%}
+          </strong>
+        </div>
+        {% empty %}
+        <p class="empty-state">
+          Nenhuma movimentação encontrada até o momento.
+        </p>
+        {% endfor %}
+      </div>
+
+      <a href="{% url 'history_transactions' %}" class="dashboard-view-more"
+        >Ver histórico completo →</a
+      >
+    </div>
+
+    <!-- Lado Direito: Atalho para Loja -->
+    <div class="dashboard-section-card side-card">
+      <div class="section-card-header">
+        <h2>Vitrine de Prêmios</h2>
+        <i data-lucide="shopping-bag" class="section-icon"></i>
+      </div>
+      <p class="side-card-text">
+        Gaste suas moedas conquistadas trocando por recompensas incríveis na
+        nossa loja interna.
+      </p>
+      <a href="/store/" class="btn-shop-now">
+        <span>Ir para a Loja</span>
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

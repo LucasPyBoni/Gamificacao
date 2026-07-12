@@ -1,0 +1,218 @@
+/* Cabeçalho da Loja */
+.store-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* Badge de Saldo */
+.store-balance {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--white-pure);
+  border: 1px solid var(--border-color);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  align-self: flex-start;
+}
+
+.store-balance__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--warning);
+}
+
+.store-balance__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-balance__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.store-balance__value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.store-balance__value small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Grid de Produtos */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Card Individual de Produto */
+.product-card {
+  background-color: var(--white-pure);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Containers de Imagem dos Prêmios */
+.product-image-placeholder {
+  height: 180px;
+  background-color: var(--white-soft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.product-img-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--navy-light);
+}
+
+/* Variações de Cores para as Imagens (Removendo Inline Styles) */
+.product-image-placeholder.img-success {
+  background-color: var(--success-light);
+}
+.product-img-icon.icon-success {
+  color: var(--success);
+}
+
+.product-image-placeholder.img-info {
+  /* Utilizando fallback caso var(--color-info-light) mude */
+  background-color: #e0f2fe;
+}
+.product-img-icon.icon-info {
+  color: #0284c7;
+}
+
+/* Informações do Produto */
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.product-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Rodapé do Card */
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Preço em Moedas */
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--warning);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.product-price i {
+  width: 18px;
+  height: 18px;
+}
+
+.product-price small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0.3rem;
+}
+
+/* Botão de Resgate Customizado Azul Marinho */
+.btn-shop-action {
+  background-color: green;
+  color: var(--white-pure);
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-shop-action:hover {
+  background-color: rgb(0, 167, 0);
+}
+
+.btn-shop-action:active {
+  transform: scale(0.97);
+}
+
+.btn-shop-action-desabilit {
+  background-color: rgb(248, 137, 97);
+  color: var(--white-pure);
+  border: none;
+  cursor: not-allowed;
+  padding: 3px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-shop-action-esgot {
+  background-color: grey;
+  color: var(--white-pure);
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}

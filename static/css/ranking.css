@@ -1,0 +1,264 @@
+/* Layout Principal do Teaser */
+.ranking-teaser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-pure);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 48px 32px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Bloco de Texto Superior */
+.teaser-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+}
+
+/* Badge Animado de Novidade */
+.badge-animated {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(234, 179, 8, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pulse-icon {
+  width: 14px;
+  height: 14px;
+  animation: teaserPulse 2s infinite ease-in-out;
+}
+
+.teaser-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.teaser-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ======================================
+   ILUSTRAÇÃO DO PÓDIO EM CSS
+======================================= */
+.podium-preview {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  height: 200px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 12px;
+}
+
+.podium-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Blocos do Pódio (Estilo Azul Marinho) */
+.podium-block {
+  width: 100%;
+  background-color: var(--navy-dark);
+  color: var(--white-pure);
+  font-weight: 700;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Alturas proporcionais de cada bloco */
+.step-1 .podium-block {
+  height: 110px;
+  background-color: var(--navy-dark);
+}
+.step-2 .podium-block {
+  height: 75px;
+  background-color: var(--navy-medium);
+}
+.step-3 .podium-block {
+  height: 50px;
+  background-color: var(--navy-light);
+}
+
+/* Coroa do Primeiro Colocado */
+.crown-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--warning);
+  position: absolute;
+  top: -46px;
+  animation: teaserFloat 3s infinite ease-in-out;
+}
+
+/* Skeletons dos Avatares acima do Bloco */
+.avatar-skeleton {
+  width: 44px;
+  height: 44px;
+  background-color: var(--white-soft);
+  border: 2px dashed var(--border-color);
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.avatar-skeleton.glow {
+  border: 2px solid var(--warning);
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.3);
+}
+
+/* ======================================
+   CONTADOR REGRESSIVO
+======================================= */
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--white-soft);
+  padding: 16px 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.countdown-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+}
+
+.timer-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.timer-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.timer-divider {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--border-color);
+  padding-bottom: 14px;
+}
+
+/* ======================================
+   ZONA DE ENGAJAMENTO (CTA)
+======================================= */
+.teaser-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 28px;
+  width: 100%;
+}
+
+.teaser-cta p {
+  font-size: 15px;
+  color: var(--text-main);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Botão Azul Marinho de Ação */
+.btn-teaser-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--navy-dark);
+  color: var(--white-pure);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-teaser-action i {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-teaser-action:hover {
+  background-color: var(--navy-medium);
+}
+
+.btn-teaser-action:active {
+  transform: scale(0.98);
+}
+
+/* Animações Auxiliares */
+@keyframes teaserPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes teaserFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}

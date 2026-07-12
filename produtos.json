@@ -1,0 +1,212 @@
+[
+  {
+    "category": "vale-comida",
+    "name": "Combo Hambúrguer Artesanal",
+    "description": "Cupom válido para 1 hambúrguer, batata frita e refrigerante.",
+    "coin_cost": 15,
+    "stock": 50
+  },
+  {
+    "category": "vale-comida",
+    "name": "Vale Almoço Executivo",
+    "description": "Refeição completa com prato principal, bebida e sobremesa.",
+    "coin_cost": 18,
+    "stock": 35
+  },
+  {
+    "category": "vale-comida",
+    "name": "Café da Manhã Premium",
+    "description": "Café completo na cafeteria parceira central.",
+    "coin_cost": 10,
+    "stock": 0
+  },
+  {
+    "category": "vale-comida",
+    "name": "Cupom Pizza Grande",
+    "description": "Válido para qualquer sabor tradicional + borda recheada.",
+    "coin_cost": 25,
+    "stock": 20
+  },
+  {
+    "category": "vale-comida",
+    "name": "Kit Snacks Saudáveis",
+    "description": "Caixa com mix de castanhas, barras de proteína e chips de vegetais.",
+    "coin_cost": 12,
+    "stock": 15
+  },
+  {
+    "category": "vale-comida",
+    "name": "Vale Jantar Japonês",
+    "description": "Combinado de salmão com 30 peças no restaurante Kyoto.",
+    "coin_cost": 45,
+    "stock": 8
+  },
+  {
+    "category": "vale-comida",
+    "name": "Voucher Sorveteria",
+    "description": "Taça de sorvete premium com 3 bolas e caldeira quente.",
+    "coin_cost": 8,
+    "stock": 40
+  },
+  {
+    "category": "eletronicos",
+    "name": "Smartphone Horizon X",
+    "description": "Tela AMOLED de 6.7 polegadas, 256GB de armazenamento e câmera quádrupla.",
+    "coin_cost": 950,
+    "stock": 5
+  },
+  {
+    "category": "eletronicos",
+    "name": "Fone de Ouvido Bluetooth ANC",
+    "description": "Isolamento acústico ativo e bateria com duração de até 30 horas.",
+    "coin_cost": 120,
+    "stock": 18
+  },
+  {
+    "category": "eletronicos",
+    "name": "Smartwatch Sport V2",
+    "description": "Monitor cardíaco, GPS integrado e resistência à água até 50 metros.",
+    "coin_cost": 180,
+    "stock": 0
+  },
+  {
+    "category": "eletronicos",
+    "name": "Carregador Por Indução Rápido",
+    "description": "Carregamento sem fio de 15W compatível com múltiplos dispositivos.",
+    "coin_cost": 35,
+    "stock": 25
+  },
+  {
+    "category": "eletronicos",
+    "name": "Caixa de Som Portátil",
+    "description": "Som estéreo de alta fidelidade com conexão Bluetooth e proteção IPX7.",
+    "coin_cost": 85,
+    "stock": 12
+  },
+  {
+    "category": "eletronicos",
+    "name": "Tablet WorkPad 10",
+    "description": "Ideal para estudos e produtividade, acompanha caneta digital.",
+    "coin_cost": 450,
+    "stock": 7
+  },
+  {
+    "category": "eletronicos",
+    "name": "Teclado Mecânico RGB",
+    "description": "Switches silenciosos e iluminação personalizável por software.",
+    "coin_cost": 65,
+    "stock": 14
+  },
+  {
+    "category": "eletronicos",
+    "name": "Mouse Gamer Ergonômico",
+    "description": "Sensor óptico de alta precisão com até 16000 DPI.",
+    "coin_cost": 40,
+    "stock": 22
+  },
+  {
+    "category": "roupa",
+    "name": "Camiseta Algodão Egípcio",
+    "description": "Camiseta básica de alta durabilidade e toque extremamente macio.",
+    "coin_cost": 25,
+    "stock": 60
+  },
+  {
+    "category": "roupa",
+    "name": "Calça Jeans Slim",
+    "description": "Corte moderno com elastano para maior conforto no dia a dia.",
+    "coin_cost": 50,
+    "stock": 30
+  },
+  {
+    "category": "roupa",
+    "name": "Jaqueta Corta-Vento Sport",
+    "description": "Material impermeável e leve, ideal para atividades ao ar livre.",
+    "coin_cost": 75,
+    "stock": 0
+  },
+  {
+    "category": "roupa",
+    "name": "Moletom Oversized Casual",
+    "description": "Moletom flanelado com capuz e bolso canguru frontal.",
+    "coin_cost": 60,
+    "stock": 15
+  },
+  {
+    "category": "roupa",
+    "name": "Tênis Urbano Confort",
+    "description": "Solado emborrachado e palmilha em gel para amortecimento.",
+    "coin_cost": 110,
+    "stock": 10
+  },
+  {
+    "category": "roupa",
+    "name": "Boné Aba Curva Premium",
+    "description": "Ajuste regulável e tecido respirável com proteção UV.",
+    "coin_cost": 15,
+    "stock": 45
+  },
+  {
+    "category": "roupa",
+    "name": "Meias Esportivas (Kit 3 pares)",
+    "description": "Cano médio com calcanhar verdadeiro e reforço nas pontas.",
+    "coin_cost": 12,
+    "stock": 100
+  },
+  {
+    "category": "roupa",
+    "name": "Vestido Midi Canelado",
+    "description": "Tecido flexível que se modela ao corpo de forma elegante.",
+    "coin_cost": 55,
+    "stock": 18
+  },
+  {
+    "category": "outros",
+    "name": "Garrafa Térmica Inox 1L",
+    "description": "Mantém a bebida gelada por 24 horas ou quente por 12 horas.",
+    "coin_cost": 30,
+    "stock": 40
+  },
+  {
+    "category": "outros",
+    "name": "Mochila Impermeável Anti-Roubo",
+    "description": "Compartimento protegido para notebook e zíperes ocultos.",
+    "coin_cost": 70,
+    "stock": 0
+  },
+  {
+    "category": "outros",
+    "name": "Luminária de Mesa LED",
+    "description": "Haste flexível e 3 níveis de intensidade de luz touch.",
+    "coin_cost": 22,
+    "stock": 19
+  },
+  {
+    "category": "outros",
+    "name": "Kit Ferramentas Manual (21 peças)",
+    "description": "Maleta compacta contendo chaves essenciais para reparos domésticos.",
+    "coin_cost": 45,
+    "stock": 8
+  },
+  {
+    "category": "outros",
+    "name": "Cadeira de Escritório Ergonômica",
+    "description": "Apoio lombar regulável e braços escamoteáveis.",
+    "coin_cost": 190,
+    "stock": 6
+  },
+  {
+    "category": "outros",
+    "name": "Almofada de Viagem Inflável",
+    "description": "Suporte anatômico para o pescoço com toque aveludado.",
+    "coin_cost": 10,
+    "stock": 35
+  },
+  {
+    "category": "outros",
+    "name": "Organizador de Cabos de Mesa",
+    "description": "Fixador em silicone autoadesivo para até 5 fios.",
+    "coin_cost": 5,
+    "stock": 120
+  }
+]

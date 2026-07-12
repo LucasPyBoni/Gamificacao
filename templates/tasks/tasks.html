@@ -1,0 +1,151 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Missões e Tarefas</h1>
+
+  <div class="store-balance">
+    <i data-lucide="coins" class="store-balance__icon"></i>
+    <div class="store-balance__content">
+      <span class="store-balance__label">Seu Saldo</span>
+      <span class="store-balance__value">
+        {{ request.user.employee.coins }} <small>moedas</small>
+      </span>
+    </div>
+  </div>
+</div>
+
+<section class="dashboard-layout">
+  <!-- Abas de Filtro de Tarefas Dinâmicas -->
+  <div class="report-filters">
+    <div class="filter-group">
+      <a href="?status=disponiveis" class="filter-link">
+        <button class="admin-btn {{ classes_abas.disponiveis }}">
+          <i data-lucide="list-todo"></i> Disponíveis
+        </button>
+      </a>
+
+      <a href="?status=em_revisao" class="filter-link">
+        <button class="admin-btn {{ classes_abas.em_revisao }}">
+          <i data-lucide="clock"></i> Em Revisão
+        </button>
+      </a>
+
+      <a href="?status=concluidas" class="filter-link">
+        <button class="admin-btn {{ classes_abas.concluidas }}">
+          <i data-lucide="check-circle-2"></i> Concluídas
+        </button>
+      </a>
+      <a href="?status=rejeitadas" class="filter-link">
+        <button class="admin-btn {{ classes_abas.rejeitadas }}">
+          <i data-lucide="x-circle"></i> Rejeitadas
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Campo de Busca por Dificuldade -->
+  <div class="mb-4 d-flex justify-content-start">
+    <form method="GET" action="" class="d-flex gap-2 align-items-center">
+      {% if request.GET.status %}
+      <input type="hidden" name="status" value="{{ request.GET.status }}" />
+      {% endif %}
+
+      <label for="dificuldade" class="fw-bold text-secondary text-nowrap m-0"
+        >Dificuldade:</label
+      >
+      <select
+        name="dificuldade"
+        id="dificuldade"
+        class="form-select form-select-sm border-secondary-subtle"
+        onchange="
+          this.value === ''
+            ? (window.location.href =
+                window.location.pathname +
+                (this.form.status ? '?status=' + this.form.status.value : ''))
+            : this.form.submit()
+        "
+        style="max-width: 200px"
+      >
+        <option value="">Todas Dificuldades</option>
+        {% for valor, nome in difficulties %}
+        <!-- aqui é pra aparecer a dificuldade no campo filtrado -->
+<option value="{{ valor }}" {% if dificuldade_filtrada|stringformat:"s" == valor|stringformat:"s" %}selected{% endif %}>
+
+          <!--  -->
+          {{ nome }}
+        </option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+
+  <!-- Lista de Tarefas / Cards -->
+  <div class="tasks-grid">
+    {% for task in tasks %}
+    <div class="task-card">
+      <!-- Topo do Card: Título e Badge de Dificuldade -->
+      <div class="task-card__header">
+        <div class="task-card__title-row">
+          <h4 class="task-card__title">{{ task.title }}</h4>
+
+          <!-- Badge de Dificuldade Dinâmica por Classes -->
+          <span
+            class="task-badge {% if task.difficulty == 'easy' %}badge-easy{% elif task.difficulty == 'medium' %}badge-medium{% else %}badge-hard{% endif %}"
+          >
+            {{ task.get_difficulty_display }}
+          </span>
+        </div>
+
+        <!-- Descrição da Tarefa -->
+        <p class="task-card__description">
+          {{ task.description|default:"Sem descrição adicional." }}
+        </p>
+      </div>
+
+      <!-- Rodapé do Card: Recompensa e Botão de Ação -->
+      <div class="task-card__footer">
+        <div class="task-card__reward-info">
+          <span class="task-card__reward-label">Recompensa</span>
+          <span class="task-card__reward-value"
+            >{{ task.coin_reward }} moedas</span
+          >
+        </div>
+
+        <!-- Ações baseadas no Status Atual da Aba -->
+        <div class="task-card__actions">
+          {% if status_atual == 'disponiveis' %}
+          <form
+            action="{% url 'complete_task' task.id %}"
+            method="POST"
+            class="task-card__form"
+          >
+            {% csrf_token %}
+            <!--  -->
+            {% if task.difficulty == 'hard' or task.difficulty == 'medium'%}
+            <button type="submit" class="task-card__btn-submit-revise">
+              Enviar para Revisão
+            </button>
+            {% else %}
+            <button type="submit" class="task-card__btn-submit">
+              Concluir
+            </button>
+            {% endif %}
+          </form>
+          {% elif status_atual == 'em_revisao' %}
+          <button class="task-card__btn-disabled" disabled>
+            ⏳ Em análise
+          </button>
+          {% elif status_atual == 'concluidas' %}
+          <button class="task-status-badge status-approved">✓ Concluída</button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <!-- Caso não tenha nenhuma tarefa na aba atual -->
+    <div class="tasks-empty">
+      <p>Nenhuma tarefa encontrada nesta categoria.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

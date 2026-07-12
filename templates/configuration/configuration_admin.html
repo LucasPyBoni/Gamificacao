@@ -1,0 +1,252 @@
+{% extends 'base.html' %} {% block content %}
+<div class="store-header">
+  <h1 class="page-title">Painel de Controle Interno</h1>
+</div>
+
+<section class="dashboard-layout mb-32">
+  <!-- Botões de Ações Rápidas do Admin -->
+  <div class="admin-quick-actions">
+    <button class="admin-btn">
+      <i data-lucide="user-plus"></i> Novo Funcionário
+    </button>
+    <button class="admin-btn">
+      <i data-lucide="gift"></i> Cadastrar Produto
+    </button>
+    <button class="admin-btn btn-danger-action">
+      <i data-lucide="alert-triangle"></i> Resetar Trimestre
+    </button>
+  </div>
+
+  <!-- Tabela de Gerenciamento de Usuários -->
+  <div class="dashboard-section-card">
+    <div class="section-card-header">
+      <h2>Funcionários Cadastrados</h2>
+      <div class="admin-search-box">
+        <input type="text" placeholder="Buscar funcionário..." />
+      </div>
+    </div>
+
+    <div class="admin-table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Funcionário</th>
+            <th>Departamento</th>
+            <th>Saldo Atual</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linha 1 -->
+          {% for employee in employees %}
+          <tr>
+            <td>
+              <div class="admin-user-cell">
+                <div class="avatar">C</div>
+                <span>{{ employee.user.username }}</span>
+              </div>
+            </td>
+            <td>{{ employee.department.department_name }}</td>
+            <td><strong>{{ employee.coins }}</strong></td>
+            <td>
+              <div class="table-actions">
+                <button class="action-edit" title="Dar Moedas">
+                  <i data-lucide="circle-plus"></i>
+                </button>
+                <button class="action-delete" title="Remover">
+                  <i data-lucide="trash-2"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Seção de Tarefas para Revisão -->
+  <div
+    style="
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      margin-top: 24px;
+    "
+  >
+    <h3
+      style="
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 20px;
+      "
+    >
+      Tarefas Aguardando Revisão
+    </h3>
+
+    <table style="width: 100%; border-collapse: collapse; text-align: left">
+      <thead>
+        <tr
+          style="
+            border-bottom: 2px solid #f1f5f9;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+          "
+        >
+          <th style="padding: 12px 24px">FUNCIONÁRIO</th>
+          <th style="padding: 12px 24px">TAREFA</th>
+          <th style="padding: 12px 24px">RECOMPENSA</th>
+          <th style="padding: 12px 24px; text-align: right">AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pending_task in pending_tasks %}
+        <tr
+          style="
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+            color: #334155;
+          "
+        >
+          <td style="padding: 16px 24px">
+            {{ pending_task.employee.user.username }}
+          </td>
+          <td style="padding: 16px 24px; font-weight: 500">
+            {{ pending_task.task.title }}
+          </td>
+          <td style="padding: 16px 24px; color: #0284c7; font-weight: 600">
+            {{ pending_task.task.coin_reward }} moedas
+          </td>
+          <td
+            style="
+              padding: 16px 24px;
+              text-align: right;
+              display: flex;
+              justify-content: flex-end;
+              gap: 12px;
+            "
+          >
+            <!-- Botão Aprovar (Chama a view de aprovação via POST) -->
+            <form
+              action="{% url 'approved_task' pending_task.id %}"
+              method="POST"
+              style="margin: 0"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                style="
+                  background: #e6f4ea;
+                  color: #137333;
+                  border: none;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  font-weight: 500;
+                  font-size: 13px;
+                "
+              >
+                Aprovar
+              </button>
+            </form>
+
+            <!-- Botão Recusar (Opcional - para deletar ou invalidar) -->
+            <form
+              action="{% url 'rejected_task' pending_task.id %}"
+              method="POST"
+              style="margin: 0"
+            >
+              {% csrf_token %}
+              <button
+                type="submit"
+                style="
+                  background: #fce8e6;
+                  color: #c5221f;
+                  border: none;
+                  padding: 6px 12px;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  font-weight: 500;
+                  font-size: 13px;
+                "
+              >
+                Recusar
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td
+            colspan="4"
+            style="
+              padding: 24px;
+              text-align: center;
+              color: #94a3b8;
+              font-size: 14px;
+            "
+          >
+            Nenhuma tarefa aguardando revisão no momento.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="store-header">
+  <h1 class="page-title">Configurações da Conta</h1>
+</div>
+
+<section class="dashboard-layout">
+  <div class="dashboard-content-split">
+    <!-- Painel de Segurança (Troca de senha) -->
+    <div class="dashboard-section-card main-card">
+      <div class="section-card-header">
+        <h2>Segurança e Acesso</h2>
+        <i data-lucide="lock" class="section-icon"></i>
+      </div>
+      <p class="section-desc">
+        Deseja atualizar suas credenciais? Preencha os campos abaixo para mudar
+        sua senha de acesso.
+      </p>
+
+      <form action="#" method="POST" class="config-form">
+        {% csrf_token %}
+        <div class="info-field">
+          <label for="current_password">Senha Atual</label>
+          <input type="password" id="current_password" />
+        </div>
+        <div class="info-field">
+          <label for="new_password">Nova Senha</label>
+          <input type="password" id="new_password" />
+        </div>
+        <button type="submit" class="btn-teaser-action">
+          Salvar Nova Senha
+        </button>
+      </form>
+    </div>
+
+    <!-- Painel de Preferências (Notificações) -->
+    <div class="dashboard-section-card side-card">
+      <div class="section-card-header">
+        <h2>Preferências</h2>
+        <i data-lucide="sliders" class="section-icon"></i>
+      </div>
+      <div class="config-toggle-group">
+        <label class="toggle-control">
+          <input type="checkbox" checked /> Notificações por e-mail
+        </label>
+        <label class="toggle-control">
+          <input type="checkbox" checked /> Alertar sobre novas tarefas
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

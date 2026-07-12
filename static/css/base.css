@@ -1,0 +1,32 @@
+:root {
+  /* --- PALETA PRINCIPAL (Azul Marinho e Branco) --- */
+  --navy-dark: #0f172a; /* Azul marinho profundo (Fundo global/Botões) */
+  --navy-medium: #1e293b; /* Azul intermediário (Hover/Destaques) */
+  --navy-light: #334155; /* Azul marinho suave */
+  --white-pure: #ffffff; /* Branco absoluto (Cards/Containers internos) */
+  --white-soft: #f8fafc; /* Branco gelo (Fundo de inputs/Telas de dashboard) */
+
+  /* --- CORES DE SISTEMA E FEEDBACK --- */
+  --success: #16a34a; /* Verde (Ganho de moedas/Tarefa concluída) */
+  --success-light: #dcfce7; /* Fundo verde claro para alertas */
+  --danger: #dc2626; /* Vermelho (Gasto de moedas/Erros) */
+  --danger-light: #fee2e2; /* Fundo vermelho claro para alertas */
+  --warning: #eab308; /* Amarelo/Dourado (Ranking/Nível/Premium) */
+
+  /* --- TEXTOS E TIPOGRAFIA --- */
+  --text-main: #0f172a; /* Texto principal de leitura */
+  --text-muted: #64748b; /* Descrições e placeholders secundários */
+  --text-light: #94a3b8; /* Textos muito discretos */
+
+  /* --- BORDAS E ELEMENTOS --- */
+  --border-color: #cbd5e1; /* Bordas padrão de tabelas e inputs */
+  --border-light: #e2e8f0; /* Linhas divisórias muito suaves */
+
+  /* --- ACABAMENTOS (Efeitos Globais) --- */
+  --radius-sm: 6px;
+  --radius-md: 12px; /* Arredondamento padrão dos seus cards */
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Sombra padrão leve */
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra para modais/cards flutuantes */
+}

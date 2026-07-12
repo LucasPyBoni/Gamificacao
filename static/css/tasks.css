@@ -1,0 +1,161 @@
+/* Layout da Grid de Cards */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Estrutura Principal do Card com borda ligeiramente mais escura (#cbd5e1) */
+.task-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+/* Topo e Títulos do Card */
+.task-card__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.task-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.task-card__description {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Badges de Dificuldade */
+.task-badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.badge-easy {
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.badge-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-hard {
+  background-color: #fef2f2;
+  color: #991b1b;
+}
+
+/* Rodapé do Card */
+.task-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.task-card__reward-label {
+  font-size: 12px;
+  color: #94a3b8;
+  display: block;
+}
+
+.task-card__reward-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+/* Formulários e Botões */
+.task-card__form {
+  margin: 0;
+}
+
+.task-card__btn-submit {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.task-card__btn-submit:hover {
+  background: #0369a1;
+}
+
+.task-card__btn-submit-revise {
+  background: rgb(139, 139, 2);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.task-card__btn-submit-revise:hover {
+  background: rgb(173, 173, 0);
+}
+
+/* Badges de Status das Abas Finais */
+.task-status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-pending {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.status-approved {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+/* Estado Vazio */
+.tasks-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* Remove estilos padrões do link em volta dos botões de filtro */
+.filter-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
