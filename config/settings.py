@@ -142,6 +142,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+# Adici one esta linha logo abaixo de STATICFILES_DIRS
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # Configurações de Mídia (Fotos que os usuários enviam)
 # Configurações de Mídia (Fotos que os usuários enviam)
