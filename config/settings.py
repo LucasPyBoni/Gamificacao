@@ -142,6 +142,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+
 # Configurações de Mídia (Fotos que os usuários enviam)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
@@ -151,18 +152,19 @@ CLOUDINARY_STORAGE = {
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_ROOT = BASE_DIR / 'media'  # CORREÇÃO: Padronizado para a sintaxe moderna de Path
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# 🔥 ADICIONE ESTAS DUAS LINHAS ABAIXO PARA RESOLVER O ERRO DO DJANGO 🔥
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# 🔥 ALTERE ESTAS LINHAS ABAIXO PARA USAR O RESTRICIONAMENTO SEGURO DO WHITENOISE 🔥
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
