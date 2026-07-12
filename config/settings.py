@@ -14,6 +14,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 Django settings for config project.
 """
 
+"""
+Django settings for config project.
+"""
+
 from pathlib import Path
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
@@ -27,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-f09xbzn=hl=un_lw^-es(9wxo(nc#3@+nt15xu0w2kl1w++8=t')
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-# CORREÇÃO 1: Adicionado o curinga do domínio onrender para liberar o CSS e tráfego de dados no ar
+# Mantém o domínio do Render liberado para o CSS carregar
 ALLOWED_HOSTS = [
     os.environ.get('RENDER_EXTERNAL_HOSTNAME', '127.0.0.1'),
     'localhost',
@@ -42,14 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # Removido o cloudinary daqui
     'accounts',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Entrega os estáticos sem quebras
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Entrega o CSS de forma estável
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,7 +81,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database
+# Database (Neon em produção, Postgres local no desenvolvimento)
 if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
@@ -116,28 +119,12 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Configurações de Mídia (Fotos de Perfil - Cloudinary)
-# Configurações de Mídia (Fotos que os usuários enviam)
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-}
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# 🔥 SOLUÇÃO DEFINITIVA: Declaramos os dois formatos de Storage juntos! 🔥
+# Configuração estável do WhiteNoise para servir os arquivos sem compressão agressiva
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.StaticFilesStorage",
-    },
-}
+# Configurações de Mídia locais padrão (sem Cloudinary)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
