@@ -137,10 +137,11 @@ USE_TZ = True
 
 # Configurações de Arquivos Estáticos (CSS, JS, Imagens do tema)
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Adici one esta linha logo abaixo de STATICFILES_DIRS
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
