@@ -117,6 +117,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Configurações de Mídia (Fotos de Perfil - Cloudinary)
+# Configurações de Mídia (Fotos que os usuários enviam)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
@@ -126,7 +127,9 @@ CLOUDINARY_STORAGE = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# CORREÇÃO 2: Unificação da arquitetura de Storages compatível com Python 3.14 e Cloudinary
+# 🔥 SOLUÇÃO DEFINITIVA: Declaramos os dois formatos de Storage juntos! 🔥
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
