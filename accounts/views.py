@@ -212,12 +212,12 @@ def complete_task(request, task_id):
   status_inicial = TaskCompletion.Status.APPROVED
 
   # 2. Define o status com base na dificuldade da tarefa
-  if task.difficulty == Task.Difficulty.HARD or task.difficulty == Task.Difficulty.MEDIUM:
+  if task.difficulty == Task.Difficulty.HARD:
     status_inicial = TaskCompletion.Status.PENDING
 
   TaskCompletion.objects.create(employee=employee, task=task, status=status_inicial)
 
-  if task.difficulty != Task.Difficulty.HARD and task.difficulty != Task.Difficulty.MEDIUM :
+  if task.difficulty != Task.Difficulty.HARD:
     CoinTransaction.objects.create(
       employee=employee,
       amount=task.coin_reward,
