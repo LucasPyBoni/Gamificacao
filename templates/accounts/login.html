@@ -2,8 +2,8 @@
 <div class="login-wrapper">
   <div class="login-card">
     <div class="login-header">
-      <h2>Bem-vindo de volta</h2>
-      <p>Insira suas credenciais para acessar o painel</p>
+      <h2>Bem-vindo</h2>
+      <p>Use as suas credenciais ou crie uma (pode usar dados ficticios)</p>
     </div>
 
     <form method="POST" action="">
@@ -17,7 +17,7 @@
             type="text"
             id="username"
             name="username"
-            placeholder="Seu nome de usuário"
+            placeholder="Seu usuário (ficticio)"
             required
           />
         </div>
@@ -31,7 +31,7 @@
             type="password"
             id="password"
             name="password"
-            placeholder="Sua senha secreta"
+            placeholder="Sua senha (Ficticia)"
             required
           />
         </div>
@@ -46,7 +46,10 @@
     </form>
 
     <div class="login-footer">
-      <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+      <p>
+        Não tem uma conta?
+        <a href="{% url 'cadastro' %}">Cadastre-se (dados ficticios)</a>
+      </p>
     </div>
   </div>
 </div>
