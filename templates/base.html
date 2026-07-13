@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorkPaid</title>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1" />
     <style>
       .meu-alerta {
         padding: 12px 16px;
@@ -35,6 +35,260 @@
         background-color: #f0f9ff;
         color: #0284c7;
         border: 1px solid #bae6fd;
+      }
+
+      .meu-alerta {
+        padding: 12px 16px;
+        border-radius: var(--radius-sm, 6px);
+        font-size: 14px;
+        font-weight: 600;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .alert-success {
+        background-color: #f0fdf4;
+        color: #16a34a;
+        border: 1px solid #bbf7d0;
+      }
+      .alert-error {
+        background-color: #fef2f2;
+        color: #dc2626;
+        border: 1px solid #fecaca;
+      }
+      .alert-warning {
+        background-color: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde68a;
+      }
+      .alert-info {
+        background-color: #f0f9ff;
+        color: #0284c7;
+        border: 1px solid #bae6fd;
+      }
+
+      /* ==========================================================================
+         CÓDIGO DE RESPONSIVIDADE COMPLETO (INTERNO + LOGIN)
+         ========================================================================== */
+      @media (max-width: 768px) {
+        /* Alvo duplo para esmagar o CSS antigo */
+        body .app-layout {
+          display: flex !important;
+          flex-direction: column !important;
+          min-height: 100vh !important;
+        }
+
+        /* Força a barra do topo a quebrar em linhas verticais */
+        body .topbar {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          height: auto !important;
+          padding: 15px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+
+        body .topbar-actions {
+          display: flex !important;
+          flex-direction: column !important; /* Empilha os botões verticalmente no celular */
+          align-items: flex-start !important;
+          width: 100% !important;
+          gap: 12px !important;
+        }
+
+        body .profile {
+          display: flex !important;
+          align-items: center !important;
+          gap: 12px !important;
+          width: 100% !important;
+        }
+
+        body .profile-info {
+          display: block !important;
+        }
+
+        body .topbar-link,
+        body .logout-form,
+        body .logout-button {
+          width: 100% !important; /* Faz os botões ocuparem a largura inteira, facilitando o clique */
+          display: block !important;
+          text-align: center;
+        }
+
+        body .logout-button {
+          padding: 10px !important;
+        }
+
+        /* Move a barra lateral para o rodapé */
+        body .sidebar {
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 60px !important;
+          z-index: 9999 !important;
+          background-color: #fff !important;
+        }
+        body .sidebar-logo {
+          display: none !important;
+        }
+        body .menu {
+          display: flex !important;
+          flex-direction: row !important;
+          justify-content: space-around !important;
+          height: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        body .menu-item {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          flex: 1 !important;
+        }
+        body .menu-item span {
+          display: none !important;
+        }
+        body .menu-item i {
+          font-size: 24px !important;
+        }
+
+        body .main-container {
+          margin-left: 0 !important;
+          width: 100% !important;
+          padding-bottom: 80px !important;
+        }
+      }
+      @media (max-width: 768px) {
+        /* Layout Geral Mobile */
+        .app-layout {
+          display: flex !important;
+          flex-direction: column !important;
+          min-height: 100vh !important;
+          overflow-x: hidden !important;
+        }
+
+        /* Sidebar vira Menu de Rodapé */
+        .sidebar {
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 60px !important;
+          z-index: 9999 !important;
+          background-color: #fff !important;
+          padding: 0 !important;
+          box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
+        }
+        .sidebar-logo {
+          display: none !important;
+        }
+        .menu {
+          display: flex !important;
+          flex-direction: row !important;
+          justify-content: space-around !important;
+          align-items: center !important;
+          height: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        .menu-item {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          font-size: 10px !important;
+          flex: 1 !important;
+        }
+        .menu-item span {
+          display: none !important;
+        }
+        .menu-item i {
+          font-size: 22px !important;
+        }
+
+        /* Ajuste do Painel de Conteúdo */
+        .main-container {
+          margin-left: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          padding: 0 0 75px 0 !important;
+          box-sizing: border-box !important;
+        }
+        .content {
+          padding: 12px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+
+        /* Correção da Topbar */
+        .topbar {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          height: auto !important;
+          padding: 15px !important;
+          gap: 12px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .topbar-title {
+          margin-bottom: 5px !important;
+          font-size: 22px !important;
+        }
+        .topbar-actions {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 10px !important;
+          width: 100% !important;
+          justify-content: flex-start !important;
+          align-items: center !important;
+        }
+        .profile {
+          display: flex !important;
+          align-items: center !important;
+          gap: 10px !important;
+          width: 100% !important;
+          margin-bottom: 5px !important;
+        }
+        .profile-info {
+          display: block !important;
+        }
+        .topbar-link,
+        .logout-form,
+        .logout-button {
+          width: auto !important;
+          display: inline-block !important;
+        }
+
+        /* Correção extra para o split do Dashboard (Cards lado a lado) */
+        .dashboard-content-split {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 15px !important;
+          width: 100% !important;
+        }
+        .dashboard-section-card {
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+
+        /* Responsividade para a caixinha do Login */
+        .login-wrapper {
+          padding: 12px !important;
+        }
+        .login-card {
+          padding: 24px 16px !important;
+          border-radius: 12px !important;
+        }
+        .login-header h2 {
+          font-size: 24px !important;
+        }
+        .input-field input {
+          padding: 14px 14px 14px 42px !important;
+          font-size: 16px !important;
+        }
       }
     </style>
   </head>
@@ -165,10 +419,17 @@
     </div>
 
     {% else %}
-    <!-- Se o usuário NÃO está logado, renderiza apenas o bloco limpo (Tela de Login) -->
     <!-- SE O USUÁRIO NÃO ESTÁ LOGADO (Telas de Login e Cadastro) -->
-    <div style="max-width: 400px; margin: 40px auto; padding: 0 20px">
-      <!-- LOCAL 2: Mensagens para Login e Cadastro (Aparece logo acima do formulário) -->
+    <div
+      style="
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0 15px;
+        box-sizing: border-box;
+      "
+    >
+      <!-- LOCAL 2: Mensagens para Login e Cadastro -->
       {% if messages %}
       <div
         style="
@@ -183,10 +444,9 @@
         <div class="meu-alerta alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
       </div>
-      {% endif %}
-      <!--  -->
-      {% block login_content %} {% endblock %}
+      {% endif %} {% block login_content %} {% endblock %}
     </div>
+
     {% endif %}
 
     <!-- Scripts Globais -->

@@ -215,4 +215,39 @@
     font-size: 14px;
     margin: 0;
   }
+  /* ==========================================
+     RESPONSIVIDADE DA TELA DE LOGIN (CELULARES)
+     ========================================== */
+  @media (max-width: 480px) {
+    /* Diminui o espaçamento externo para dar mais espaço ao card */
+    .login-wrapper {
+      padding: 12px;
+    }
+
+    /* Reduz o padding interno do card para os inputs respirarem nas telas estreitas */
+    .login-card {
+      padding: 24px 16px;
+      border-radius: 12px;
+    }
+
+    /* Ajusta o tamanho dos títulos para telas pequenas */
+    .login-header h2 {
+      font-size: 24px;
+    }
+
+    .login-header p {
+      font-size: 13px;
+    }
+
+    /* Garante que os inputs fiquem fáceis de tocar com o dedo no celular */
+    .input-field input {
+      padding: 14px 14px 14px 42px;
+      font-size: 16px; /* Evita que o iOS dê zoom automático indesejado no input */
+    }
+
+    .btn-login {
+      padding: 14px;
+      font-size: 16px;
+    }
+  }
 </style>
