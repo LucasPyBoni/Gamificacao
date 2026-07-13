@@ -120,7 +120,7 @@
           >
             {% csrf_token %}
             <!--  -->
-            {% if task.difficulty == 'hard' or task.difficulty == 'medium'%}
+            {% if task.difficulty == 'hard' %}
             <button type="submit" class="task-card__btn-submit-revise">
               Enviar para Revisão
             </button>
