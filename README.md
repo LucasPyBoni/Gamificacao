@@ -12,8 +12,6 @@ OBS: Foi feita com ajuda de IA, principalmente o HTML/CSS e JS
 
 Framework Django, psycopg2-binary para o banco de dados 
 
-### Explicação da linha de raciocínio:
-
 ### Divisões: 
 
 . dashboard - Onde o funcionário vê o saldo, histórico de atividades e suas progressões.
