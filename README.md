@@ -1,29 +1,145 @@
-## Sobre o projeto:
+# 🎮 Sistema de Gamificação
 
-Projeto baseado em gamificação, onde os funcionários que cumprem tarefas e são disciplinados recebem moedas, e em troca, podem reivindicar prêmios na loja.
-Ainda em evolução e com muitas funcionalidades a vir pela frente.
+## 📖 Sobre o projeto
 
-OBS: Foi feita com ajuda de IA, principalmente o HTML/CSS e JS
+Este é um projeto de gamificação voltado para empresas.
 
-### Link do site
-[Gamificação](https://gamificacao-obk4.onrender.com/)
+A ideia é simples: funcionários que cumprem tarefas, mantêm disciplina e atingem metas recebem moedas como recompensa. Essas moedas podem ser utilizadas para resgatar produtos e benefícios disponíveis na loja da plataforma.
 
-### Principais Bibliotecas:
+O projeto ainda está em desenvolvimento e novas funcionalidades serão adicionadas conforme ele evolui.
 
-Framework Django, psycopg2-binary para o banco de dados 
+> **Observação:** utilizei IA como ferramenta de apoio durante o desenvolvimento, principalmente para HTML, CSS e JavaScript. Toda a lógica da aplicação, estrutura do sistema, modelagem do banco e implementação em Django foram desenvolvidas por mim.
 
-### Divisões: 
+---
 
-. dashboard - Onde o funcionário vê o saldo, histórico de atividades e suas progressões.
+## 🌐 Acesse o projeto
 
-. tarefas - Tarefas divididas em fácil, média e difícil. As dificeis precisam passar por revisão, pois pagam muito, além disso, tem uma divisão entre disponiveis, em revisão, rejeitadas e concluidas para cada colaborador
+👉 https://gamificacao-obk4.onrender.com/
 
-. loja - Roupas, eletrônicos, Vales e outros. Os campos mudam se o funcionário tem pouca moeda ou se o estoque do produto está zerado.
+---
 
-. ranking - Está inativo por enquanto, mas aqui vai ter uma ranking dos melhores funcionários ou departamentos.
+## 🛠 Tecnologias utilizadas
 
-. relatórios - Dados sobre o histórico do funcionário ou da empresa em relação aos prêmios, podendo exportar csv para melhor análise.
+- Python
+- Django
+- PostgreSQL
+- psycopg2-binary
+- HTML
+- CSS
+- JavaScript
 
-. perfil - Aqui é onde fica as informações pessoais e estão guardadas os prêmios do colaborador.
+---
 
-. configurações - Se for funcionário normal, aqui é onde troca senha, se for admin, é onde aprova ou rejeita as tarefas, visualiza todos os dados e cadastra produtos, tarefas e trabalhadores.
+## 📌 Funcionalidades
+
+### 📊 Dashboard
+
+Área inicial do colaborador, onde é possível visualizar:
+
+- saldo de moedas;
+- histórico de atividades;
+- progresso dentro da plataforma.
+
+---
+
+### ✅ Tarefas
+
+As tarefas são divididas em três níveis de dificuldade:
+
+- Fácil
+- Média
+- Difícil
+
+As tarefas difíceis precisam passar por aprovação antes da recompensa ser liberada.
+
+Cada colaborador também possui uma organização das tarefas por status:
+
+- Disponíveis
+- Em revisão
+- Rejeitadas
+- Concluídas
+
+---
+
+### 🛒 Loja
+
+Os colaboradores podem trocar moedas por diferentes recompensas, como:
+
+- roupas;
+- eletrônicos;
+- vales;
+- outros benefícios.
+
+A interface muda dinamicamente conforme:
+
+- quantidade de moedas do usuário;
+- disponibilidade em estoque.
+
+---
+
+### 🏆 Ranking
+
+Atualmente está desativado.
+
+A ideia é exibir rankings como:
+
+- melhores colaboradores;
+- melhores departamentos;
+- outros indicadores de desempenho.
+
+---
+
+### 📈 Relatórios
+
+Permite acompanhar informações da empresa e dos colaboradores, como:
+
+- histórico de prêmios;
+- resgates realizados;
+- análises gerais.
+
+Também é possível exportar os dados em **CSV**.
+
+---
+
+### 👤 Perfil
+
+Área destinada às informações pessoais do colaborador.
+
+Também funciona como um histórico dos prêmios já conquistados.
+
+---
+
+### ⚙ Configurações
+
+As funcionalidades variam conforme o tipo de usuário.
+
+**Funcionário**
+
+- alterar senha;
+- gerenciar informações da conta.
+
+**Administrador**
+
+- aprovar ou rejeitar tarefas;
+- cadastrar colaboradores;
+- cadastrar produtos;
+- cadastrar tarefas;
+- visualizar informações gerais do sistema.
+
+---
+
+## 🚀 Próximas melhorias
+
+- Sistema de ranking completo
+- Conquistas e medalhas
+- Notificações
+- Dashboard com mais gráficos
+- Melhorias na responsividade
+- Novos relatórios
+- Mais opções de recompensas
+
+---
+
+## 💡 Objetivo
+
+Este projeto foi criado para praticar desenvolvimento web utilizando Django, além de explorar conceitos de gamificação, autenticação, permissões, banco de dados, geração de relatórios e organização de um sistema com múltiplos módulos.
