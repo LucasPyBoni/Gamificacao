@@ -5,9 +5,7 @@
   --background: linear-gradient(135deg, #020617, #0f172a);
 
   --white: #fff;
-
   --gray: #64748b;
-
   --border: #dbe2ea;
 }
 
@@ -18,18 +16,14 @@
 }
 
 body {
-  font-family:
-    Segoe UI,
-    sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .login-wrapper {
   min-height: 100dvh;
 
   display: flex;
-
   justify-content: center;
-
   align-items: center;
 
   background: var(--background);
@@ -38,9 +32,9 @@ body {
 }
 
 .login-card {
-  width: min(100%, 420px);
+  width: min(100%, 430px);
 
-  background: white;
+  background: var(--white);
 
   border-radius: 18px;
 
@@ -52,13 +46,13 @@ body {
 .login-header {
   text-align: center;
 
-  margin-bottom: 35px;
+  margin-bottom: 32px;
 }
 
 .login-header h1 {
   color: var(--primary);
 
-  font-size: 32px;
+  font-size: 30px;
 
   margin-bottom: 10px;
 }
@@ -66,11 +60,13 @@ body {
 .login-header p {
   color: var(--gray);
 
-  line-height: 1.6;
+  line-height: 1.5;
+
+  font-size: 14px;
 }
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .input-group label {
@@ -96,7 +92,7 @@ body {
 
   outline: none;
 
-  transition: 0.3s;
+  transition: 0.25s;
 }
 
 .input-group input:focus {
@@ -108,9 +104,11 @@ body {
 .forgot-password {
   display: block;
 
-  text-align: right;
+  margin-top: -5px;
 
   margin-bottom: 25px;
+
+  text-align: right;
 
   text-decoration: none;
 
@@ -124,6 +122,8 @@ body {
 
   height: 50px;
 
+  margin-top: 5px;
+
   border: none;
 
   border-radius: 10px;
@@ -132,9 +132,11 @@ body {
 
   color: white;
 
-  cursor: pointer;
-
   font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 
   transition: 0.25s;
 }
@@ -144,24 +146,40 @@ body {
 }
 
 .login-footer {
-  margin-top: 30px;
+  margin-top: 28px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid var(--border);
 
   text-align: center;
 
   color: var(--gray);
+
+  font-size: 14px;
 }
 
 .login-footer a {
-  text-decoration: none;
-
   color: var(--primary);
+
+  text-decoration: none;
 
   font-weight: 600;
 }
 
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ========= CELULAR ========= */
+
 @media (max-width: 768px) {
   .login-card {
-    padding: 28px;
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 30px;
   }
 
   .login-header h1 {
@@ -180,11 +198,71 @@ body {
     border-radius: 14px;
   }
 
+  .login-header {
+    margin-bottom: 24px;
+  }
+
   .login-header h1 {
     font-size: 24px;
   }
 
   .login-header p {
+    font-size: 13px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-group label {
     font-size: 14px;
   }
+
+  .input-group input {
+    height: 46px;
+
+    font-size: 14px;
+  }
+
+  .btn-login {
+    height: 46px;
+
+    font-size: 15px;
+  }
+
+  .forgot-password,
+  .login-footer {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 340px) {
+  .login-card {
+    padding: 18px;
+  }
+
+  .login-header h1 {
+    font-size: 22px;
+  }
+
+  .input-group input {
+    height: 44px;
+  }
+}
+
+.login-header p {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.btn-login {
+  margin-top: 10px;
+}
+
+.login-footer {
+  margin-top: 25px;
+}
+
+.login-footer a {
+  font-weight: 600;
 }

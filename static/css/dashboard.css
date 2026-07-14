@@ -278,3 +278,75 @@
   padding: 32px 0;
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  /* Força a redução de espaçamento com !important se necessário */
+  .store-header {
+    margin-bottom: 16px !important;
+  }
+
+  .page-title {
+    font-size: 24px !important;
+  }
+
+  .dashboard-layout {
+    gap: 16px !important;
+  }
+
+  .metric-card {
+    padding: 16px !important;
+    gap: 8px !important;
+  }
+
+  .metric-value,
+  .metric-value-money {
+    font-size: 20px !important;
+  }
+}
+
+.sidebar-header-mobile {
+  display: none; /* Esconde no desktop */
+  padding: 5px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .sidebar-header-mobile {
+    display: block; /* Mostra no mobile */
+  }
+  .close-menu {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Diminui o gap entre os cards */
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr; /* Força 2 colunas no celular para caber melhor */
+    gap: 10px;
+  }
+
+  /* Compacta o card de métrica */
+  .metric-card {
+    padding: 12px !important;
+    gap: 4px !important;
+  }
+
+  /* Diminui ícones e textos dentro do card */
+  .metric-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .metric-title {
+    font-size: 11px;
+  }
+
+  .metric-value,
+  .metric-value-money {
+    font-size: 18px !important;
+  }
+}

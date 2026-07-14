@@ -22,3 +22,18 @@ select {
 select:hover {
   background: var(--white-soft);
 }
+
+/* Correção Global para evitar que qualquer elemento estoure a tela */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Garante que o container principal respeite a largura da tela */
+.main-container {
+  min-width: 0; /* Isso é crucial para containers flex não estourarem */
+  width: 100%;
+}

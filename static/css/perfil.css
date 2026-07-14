@@ -6,12 +6,6 @@
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .profile-layout-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Base dos Cartões de Seção */
 .dashboard-section-card {
   background-color: var(--white-pure);
@@ -165,4 +159,45 @@
 .store-header-perfil-compras {
   margin-top: 32px;
   margin-bottom: 32px;
+}
+
+/* ===================================================
+   MOBILE OTIMIZADO PARA PERFIL
+   =================================================== */
+@media (max-width: 768px) {
+  /* 1. O container já vira 1 coluna com seu grid atual, 
+     mas precisamos garantir os espaçamentos */
+  .profile-layout-grid {
+    gap: 16px;
+  }
+
+  .dashboard-section-card {
+    padding: 20px !important;
+  }
+
+  /* 2. Estatísticas: Se ficarem muito apertadas, podemos 
+     reduzir a fonte ou forçar um alinhamento mais limpo */
+  .profile-mini-stats {
+    gap: 8px;
+    padding-top: 15px;
+  }
+
+  .p-stat strong {
+    font-size: 16px; /* Reduzido de 20px para caber melhor */
+  }
+
+  .p-stat span {
+    font-size: 10px; /* Reduzido de 12px */
+  }
+
+  /* 3. Ajuste de campos de formulário/texto */
+  .info-field p {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  /* 4. Títulos de seção no mobile */
+  .section-card-header h2 {
+    font-size: 16px;
+  }
 }

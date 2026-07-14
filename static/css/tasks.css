@@ -159,3 +159,75 @@
 .fw-bold {
   font-weight: 600;
 }
+
+/* ===================================================
+   MOBILE OTIMIZADO PARA TASKS
+   =================================================== */
+@media (max-width: 600px) {
+  /* 1. Transforma o grid em apenas 1 coluna para caber no celular */
+  .tasks-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* 2. Compacta o card para economizar espaço vertical */
+  .task-card {
+    min-height: auto; /* Deixa o card ter o tamanho real do conteúdo */
+    padding: 16px;
+  }
+
+  /* 3. Garante que os botões (submit/revise) não sumam */
+  .task-card__footer {
+    flex-direction: column; /* Coloca os botões um embaixo do outro no mobile */
+    gap: 12px;
+    align-items: stretch; /* Faz os botões ocuparem a largura total */
+  }
+
+  /* 4. Ajusta o tamanho da fonte para não estourar */
+  .task-card__title {
+    font-size: 15px;
+  }
+
+  .task-card__description {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+}
+
+/* ===================================================
+   CORREÇÃO FINAL DE LAYOUT MOBILE (TASKS)
+   =================================================== */
+@media (max-width: 768px) {
+  /* 1. Filtros (Abas): Permite quebrar linha e ocupa toda a largura */
+  .report-filters .filter-group {
+    flex-direction: column !important; /* Coloca os botões um abaixo do outro */
+    align-items: stretch !important;
+    width: 100%;
+  }
+
+  /* 2. Remove o comportamento horizontal forçado do Bootstrap */
+  .d-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  /* 3. Ajusta o seletor de dificuldade */
+  #dificuldade {
+    max-width: 100% !important; /* Ocupa toda a largura do mobile */
+    width: 100% !important;
+  }
+
+  /* 4. Corrige os botões de ação do card */
+  .task-card__actions {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .task-card__btn-submit,
+  .task-card__btn-submit-revise {
+    width: 100%; /* Botão ocupa toda a largura */
+    text-align: center;
+  }
+}

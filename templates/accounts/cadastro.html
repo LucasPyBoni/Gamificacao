@@ -1,228 +1,98 @@
 {% load static %}
-<div class="login-wrapper">
-  <div class="login-card">
-    <div class="login-header">
-      <h2>Crie sua conta demo</h2>
-      <p>Preencha os dados ficticios abaixo para começar</p>
-      <p>Email (teste@email.com) e senha (123@teste) por exemplo</p>
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
+    <title>Cadastro</title>
+  </head>
+
+  <body>
+    <div class="login-wrapper">
+      <div class="login-card">
+        <div class="login-header">
+          <h2>Crie sua conta demo</h2>
+          <p>Email: teste@email.com | Senha: 123@teste</p>
+        </div>
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="input-group">
+            <label>Usuário</label>
+
+            <div class="input-field">
+              <span class="icon">👤</span>
+
+              <input
+                type="text"
+                name="username"
+                placeholder="Escolha um nome de usuário"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>E-mail</label>
+
+            <div class="input-field">
+              <span class="icon">✉️</span>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu melhor e-mail"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Senha</label>
+
+            <div class="input-field">
+              <span class="icon">🔒</span>
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Crie uma senha forte"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Confirmar senha</label>
+
+            <div class="input-field">
+              <span class="icon">✅</span>
+
+              <input
+                type="password"
+                name="password_confirm"
+                placeholder="Digite novamente"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+          </div>
+
+          <button class="btn-login">Criar minha conta</button>
+        </form>
+
+        <div class="login-footer">
+          Já possui uma conta?
+
+          <a href="{% url 'login' %}"> Fazer login </a>
+        </div>
+      </div>
     </div>
-
-    <form method="POST" action="">
-      {% csrf_token %}
-
-      <div class="input-group">
-        <label for="username">Usuário</label>
-        <div class="input-field">
-          <span class="icon">👤</span>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Escolha um nome de usuário"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="input-group">
-        <label for="email">E-mail</label>
-        <div class="input-field">
-          <span class="icon">✉️</span>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Seu melhor e-mail"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="input-group">
-        <label for="password">Senha</label>
-        <div class="input-field">
-          <span class="icon">🔒</span>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Crie uma senha forte"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="input-group">
-        <label for="password_confirm">Confirmar Senha</label>
-        <div class="input-field">
-          <span class="icon">✅</span>
-          <input
-            type="password"
-            id="password_confirm"
-            name="password_confirm"
-            placeholder="Digite a senha novamente"
-            required
-          />
-        </div>
-      </div>
-
-      <button type="submit" class="btn-login">Criar minha conta</button>
-    </form>
-
-    <div class="login-footer">
-      <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
-    </div>
-  </div>
-</div>
-
-<style>
-  /* Variáveis de Cores em Azul Marinho */
-  :root {
-    --primary-color: #0f172a;
-    --primary-hover: #1e293b;
-    --bg-gradient: linear-gradient(135deg, #020617 0%, #0f172a 100%);
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-color: #cbd5e1;
-  }
-
-  /* Container Principal */
-  .login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: var(--bg-gradient);
-    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 40px 20px; /* Aumentado o padding vertical para telas menores */
-    box-sizing: border-box;
-  }
-
-  /* Card de Cadastro */
-  .login-card {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 420px;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-  }
-
-  /* Cabeçalho */
-  .login-header {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-
-  .login-header h2 {
-    color: var(--text-main);
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0 0 8px 0;
-  }
-
-  .login-header p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin: 0;
-  }
-
-  /* Grupos de Input */
-  .input-group {
-    margin-bottom: 18px;
-    position: relative;
-  }
-
-  .input-group label {
-    display: block;
-    color: var(--text-main);
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .input-field {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .input-field .icon {
-    position: absolute;
-    left: 14px;
-    font-size: 16px;
-    color: var(--text-muted);
-  }
-
-  .input-field input {
-    width: 100%;
-    padding: 12px 14px 12px 42px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 15px;
-    color: var(--text-main);
-    background-color: #fff;
-    transition: all 0.3s ease;
-    outline: none;
-    box-sizing: border-box;
-  }
-
-  .input-field input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.15);
-  }
-
-  /* Links */
-  .login-footer a {
-    color: var(--primary-color);
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .login-footer a:hover {
-    text-decoration: underline;
-  }
-
-  /* Botão de Cadastro */
-  .btn-login {
-    width: 100%;
-    padding: 14px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition:
-      background 0.3s ease,
-      transform 0.1s ease;
-    margin-top: 10px;
-  }
-
-  .btn-login:hover {
-    background: var(--primary-hover);
-  }
-
-  .btn-login:active {
-    transform: scale(0.98);
-  }
-
-  /* Rodapé do Card */
-  .login-footer {
-    text-align: center;
-    margin-top: 24px;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 20px;
-  }
-
-  .login-footer p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin: 0;
-  }
-</style>
+  </body>
+</html>

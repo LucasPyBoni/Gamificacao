@@ -262,3 +262,60 @@
     transform: translateY(-6px);
   }
 }
+
+/* ===================================================
+   MOBILE OTIMIZADO PARA RANKING (TEASER)
+   =================================================== */
+@media (max-width: 600px) {
+  /* 1. Reduz o padding para ganhar espaço lateral */
+  .ranking-teaser {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+
+  /* 2. Ajusta o título para não quebrar feio */
+  .teaser-title {
+    font-size: 24px;
+  }
+
+  /* 3. Escala o pódio para caber melhor no mobile */
+  .podium-preview {
+    height: 150px; /* Reduz altura total do pódio */
+    gap: 8px; /* Reduz o espaçamento entre os degraus */
+  }
+
+  /* Reduz os blocos proporcionalmente */
+  .step-1 .podium-block {
+    height: 80px;
+    font-size: 18px;
+  }
+  .step-2 .podium-block {
+    height: 55px;
+    font-size: 16px;
+  }
+  .step-3 .podium-block {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* Ajusta a coroa */
+  .crown-icon {
+    width: 22px;
+    height: 22px;
+    top: -30px;
+  }
+
+  /* 4. Contador Regressivo: Muda para 2 linhas se necessário */
+  .timer-segment {
+    min-width: 40px;
+  }
+  .timer-number {
+    font-size: 20px;
+  }
+
+  /* 5. CTA: Ajusta o botão para largura cheia */
+  .btn-teaser-action {
+    width: 100%;
+    justify-content: center;
+  }
+}

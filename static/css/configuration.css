@@ -251,3 +251,47 @@
     --navy-dark
   ); /* Deixa a caixa de marcação em azul marinho */
 }
+
+/* ===================================================
+   MOBILE OTIMIZADO PARA CONFIGURAÇÕES
+   =================================================== */
+@media (max-width: 768px) {
+  /* 1. Ações Rápidas: Botões um abaixo do outro */
+  .admin-quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-btn {
+    justify-content: center;
+  }
+
+  /* 2. Busca: Ocupa a largura total */
+  .admin-search-box input {
+    width: 100%;
+  }
+
+  /* 3. TABELA RESPONSIVA:
+     A tabela não deve "quebrar". O overflow-x já ajuda, 
+     mas vamos garantir que o padding das células não seja exagerado. */
+  .admin-table th,
+  .admin-table td {
+    padding: 12px 8px; /* Reduzido para economizar espaço horizontal */
+    font-size: 13px;
+  }
+
+  /* 4. Formulário de Senha/Info */
+  .config-form {
+    max-width: 100%; /* Ocupa tudo no mobile */
+  }
+
+  .btn-teaser-action {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 5. Ajuste visual para o avatar na tabela mobile */
+  .admin-user-cell {
+    gap: 8px;
+  }
+}

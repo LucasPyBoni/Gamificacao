@@ -1,6 +1,6 @@
 /* ===================================================
-   LAYOUT GERAL
-=================================================== */
+    LAYOUT GERAL
+  =================================================== */
 
 .app-layout {
   display: flex;
@@ -9,8 +9,8 @@
 }
 
 /* ===================================================
-   SIDEBAR
-=================================================== */
+    SIDEBAR
+  =================================================== */
 
 .sidebar {
   width: 260px;
@@ -103,8 +103,8 @@
 }
 
 /* ===================================================
-   MAIN
-=================================================== */
+    MAIN
+  =================================================== */
 
 .main-container {
   flex: 1;
@@ -117,8 +117,8 @@
 }
 
 /* ===================================================
-   TOPBAR
-=================================================== */
+    TOPBAR
+  =================================================== */
 
 .topbar {
   height: 70px;
@@ -209,8 +209,8 @@
 }
 
 /* ===================================================
-   PERFIL
-=================================================== */
+    PERFIL
+  =================================================== */
 
 .profile {
   display: flex;
@@ -333,8 +333,8 @@
 }
 
 /* ===================================================
-   CONTEÚDO
-=================================================== */
+    CONTEÚDO
+  =================================================== */
 
 .content {
   flex: 1;
@@ -349,8 +349,8 @@
 }
 
 /* ===================================================
-   ALERTAS
-=================================================== */
+    ALERTAS
+  =================================================== */
 
 .alert {
   padding: 12px 16px;
@@ -361,80 +361,78 @@
 }
 
 /* ===================================================
-   MOBILE
-=================================================== */
+    MOBILE
+  =================================================== */
 
+/* ===================================================
+   MOBILE OTIMIZADO
+   =================================================== */
 @media (max-width: 768px) {
+  /* Layout: Remove o flex no pai para permitir scroll */
   .app-layout {
     display: block;
   }
 
+  /* SIDEBAR: Comportamento de menu slide-in */
   .sidebar {
     position: fixed;
-
     top: 0;
-
     left: -260px;
-
     width: 260px;
-
-    height: 100dvh;
-
-    z-index: 9999;
+    height: 100%;
+    z-index: 1000;
   }
-
   .sidebar.open {
     left: 0;
   }
 
-  .sidebar-logo {
-    display: block;
-  }
-
-  .menu {
-    flex-direction: column;
-
-    padding: 18px 14px;
-  }
-
-  .menu-item {
-    flex-direction: row;
-
-    justify-content: flex-start;
-  }
-
-  .menu-item span {
-    display: inline;
-  }
-
-  .main-container {
-    width: 100%;
-  }
-
+  /* TOPBAR: Ajuste de densidade */
   .topbar {
-    padding: 0 16px;
+    padding: 0 10px;
+  }
+
+  .profile-name,
+  .profile-dept {
+    display: none; /* Deixe apenas o avatar no mobile se necessário */
   }
 
   .menu-toggle {
-    display: flex;
+    display: flex !important;
   }
 
-  .profile-info {
-    display: none;
-  }
-
+  /* ESCONDER ELEMENTOS DE DESKTOP APENAS SE NECESSÁRIO */
+  .profile-info,
   .topbar-link {
     display: none;
   }
 
+  /* CONTEÚDO: Ajuste de margens */
   .content {
-    padding: 20px;
+    padding: 16px;
+  }
+
+  /* CORREÇÃO CRÍTICA: 
+     Em vez de esconder .btn globalmente, 
+     vamos apenas ajustar o tamanho deles. */
+  .btn {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+
+  /* CORREÇÃO CRÍTICA:
+     Certifique-se de que containers de botões (como em tarefas) 
+     não tenham display: none. Use flex-wrap para eles não estourarem. */
+  .button-group,
+  .task-actions {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
 /* ===================================================
-   DESKTOP
-=================================================== */
+    DESKTOP
+  =================================================== */
 
 @media (min-width: 769px) {
   .sidebar {
