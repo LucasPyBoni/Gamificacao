@@ -302,6 +302,9 @@
   .metric-value-money {
     font-size: 20px !important;
   }
+  .metric-card {
+    width: 75%;
+  }
 }
 
 .sidebar-header-mobile {

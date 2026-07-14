@@ -262,8 +262,8 @@
 
   .store-balance {
     padding: 8px 12px !important;
-    gap: 8px !important;
-    width: 100% !important;
+    gap: 4px !important;
+    width: 50% !important;
     box-sizing: border-box;
     justify-content: space-between; /* Ícone numa ponta, valor na outra */
   }
